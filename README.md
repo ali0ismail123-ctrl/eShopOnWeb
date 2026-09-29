@@ -166,3 +166,21 @@ You can also run the applications by using the instructions located in their `Do
 We have some great contributions from the community, and while these aren't maintained by Microsoft we still want to highlight them.
 
 [eShopOnWeb VB.NET](https://github.com/VBAndCs/eShopOnWeb_VB.NET) by Mohammad Hamdy Ghanem
+
+## Platform project log
+
+### Day 1 — Local baseline
+
+| Command | Why I used it | Result |
+|---|---|---|
+| `git rev-parse HEAD` | Record the exact starting version of the sample app. | Saved commit `4306a451e8e376ab4c11bb68ceb894f55b3947f8`. |
+| `docker compose up --build` | Build and start the web app, API and local SQL service. | The containers started after I opened Docker Desktop. |
+| `docker compose ps` | Check which services were running and their ports. | All three services were up. |
+| `docker compose restart eshopwebmvc` | Retry the web app after its initial database error. | The shop loaded after the restart. |
+| `dotnet test eShopOnWeb.sln` | Run the sample application's automated tests. | 74 passed; none failed or were skipped. |
+| `git status --short` | Check which local files had changed. | The working tree was clean before I wrote my notes. |
+| `git switch -c docs/day1-baseline` | Keep my documentation change separate from `main`. | Created the Day 1 branch. |
+| `git add` and `git commit` | Save the workload inventory as a tracked change. | Created commit `e141c0c`. |
+| `git push` | Upload the branch to my GitHub fork. | Branch is available for review. |
+
+The SQL startup error and recovery are described in [the workload inventory](docs/workload-inventory.md).
