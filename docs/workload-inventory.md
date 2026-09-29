@@ -28,6 +28,8 @@ Docker Compose starts three services:
 
 I opened the shop at `http://localhost:5106` and confirmed the page loads.
 
+View the local shop screenshot. Path to the screenshot is (evidence/local-shop.jpeg)
+
 
 
 \## Database dependencies
@@ -55,4 +57,6 @@ My first Compose attempt failed because Docker Desktop's Linux engine wasn't run
 
 
 The website then showed a SQL error saying it couldn't open the catalog database, along with pending migrations. All three containers showed as running in `docker compose ps`. I restarted `eshopwebmvc`, refreshed the page, and the shop loaded. This suggests the web app first started before SQL and its databases were ready, but I haven't proved the exact timing yet.
+
+
 
