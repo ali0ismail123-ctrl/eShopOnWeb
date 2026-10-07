@@ -184,3 +184,21 @@ We have some great contributions from the community, and while these aren't main
 | `git push` | Upload the branch to my GitHub fork. | Branch is available for review. |
 
 The SQL startup error and recovery are described in [the workload inventory](docs/workload-inventory.md).
+
+### CI pipeline — 2 October
+
+The existing pipeline only ran the unit tests. I changed it to use .NET 8 and run all four test projects. I ran it myself first, then opened a PR to see if it would run automatically. Both runs passed all 74 tests.
+
+I did get mixed up with the branches at first and copied an ACI deployment file into a new CI file. I checked what had actually been saved, closed that PR, and merged the change to the correct CI file.
+
+| Command | Why I used it |
+|---|---|
+| `git fetch origin` | To see the latest branches and commits from GitHub. |
+| `git branch -a` | To see which CI branches existed. |
+| `git diff --name-status origin/main origin/ci/pr-validation` | To check that the correct branch had changed the CI file. |
+| `git show origin/ci/full-test-validation-20260930:.ado/eshoponweb-ci-full-tests.yml` | To see what I'd accidentally saved in the other branch. |
+| `git log -1 --oneline` | To compare the latest commits on main and the CI branch. |
+| `git switch main` and `git pull --ff-only origin main` | To get the merged change onto my computer. |
+
+The PR also linked to my first Azure Boards work item, #1. The main thing I learned is to check the branch and YAML file path before editing a pipeline.
+

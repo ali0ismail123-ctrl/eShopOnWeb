@@ -1,8 +1,8 @@
-\# Workload inventory
+Workload inventory
 
 
 
-\## Starting commit
+Starting commit
 
 
 
@@ -10,7 +10,7 @@ I forked MicrosoftLearning/eShopOnWeb and started from commit `4306a451e8e376ab4
 
 
 
-\## Running services and ports
+Running services and ports
 
 
 
@@ -32,15 +32,14 @@ View the local shop screenshot. Path to the screenshot is (evidence/local-shop.j
 
 
 
-\## Database dependencies
+Database dependencies
 
 
 
 The README describes two databases. One holds catalog and basket data; the other holds application identity data. The web app needs SQL to be ready before it can use them.
 
 
-
-\## Local validation
+Local validation
 
 
 
@@ -48,7 +47,7 @@ I ran `dotnet test eShopOnWeb.sln` with .NET SDK 8.0.425. All 74 tests passed: 4
 
 
 
-\## Startup issue and recovery
+ Startup issue and recovery
 
 
 
@@ -58,5 +57,10 @@ My first Compose attempt failed because Docker Desktop's Linux engine wasn't run
 
 The website then showed a SQL error saying it couldn't open the catalog database, along with pending migrations. All three containers showed as running in `docker compose ps`. I restarted `eshopwebmvc`, refreshed the page, and the shop loaded. This suggests the web app first started before SQL and its databases were ready, but I haven't proved the exact timing yet.
 
+ 
+Azure Pipelines PR check
 
+I linked my GitHub fork to Azure Boards and used work item #1 to track the CI change. The existing PR pipeline only ran the unit tests, so I added a .NET 8 SDK step and changed it to run all four test projects.
+
+I ran the pipeline manually, then opened a GitHub PR to check that it triggered automatically. Both runs passed all 74 tests. I reviewed and merged the PR. This checks the build and tests on an Azure Pipelines agent; it doesn't check a deployment or my local Docker SQL setup.
 
